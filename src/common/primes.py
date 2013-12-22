@@ -30,8 +30,8 @@ def factor(number):
                 break
     factors = []
     for n in next_prime():
-        if n*n > number:
-            break
         if number % n == 0:
             factors.append(n)
+        if n*n > number and len(factors):
+            break
     return factors
