@@ -24,14 +24,16 @@ def compute_primes(number_of_primes):
     return prime_cache[:number_of_primes]
 
 def factor(number):
-    if prime_cache[-1]*prime_cache[-1] < number:
-        for n in next_prime():
-            if n*n > number:
-                break
     factors = []
+    append = factors.append
+    multiple = 1
     for n in next_prime():
         if number % n == 0:
-            factors.append(n)
-        if n*n > number and len(factors):
-            break
+            power = 1
+            while number % (n**(power+1)) == 0:
+                power += 1
+            append((n, power))
+            multiple *= n**power
+            if multiple == number:
+                break
     return factors
