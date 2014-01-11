@@ -24,6 +24,8 @@ def compute_primes(number_of_primes):
     return prime_cache[:number_of_primes]
 
 def factor(number):
+    if number == 1:
+        return [(1,1)]
     factors = []
     append = factors.append
     multiple = 1
